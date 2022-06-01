@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!-- 数据库链接地址账号密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://49.233.189.200:3306/sys_referral" userId="root" password="123456"> </jdbcConnection>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/sys_referral" userId="root" password="123456"> </jdbcConnection>
         <!-- 生成DataObject类存放位置 -->
         <javaModelGenerator targetPackage="com.ssw.referral.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
