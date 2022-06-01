@@ -1,9 +1,13 @@
 package com.ssw.referral.service;
 
+import com.ssw.referral.model.UserModel;
+
 /**
  * 使用接口的好处
  * 方便替换 只要方法实现了UserService接口 可以有service1 service2
  * 多态+接口抽象的思想
  */
 public interface UserService {
+
+    UserModel getUser(Integer id);
 }
