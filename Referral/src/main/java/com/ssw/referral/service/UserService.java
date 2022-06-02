@@ -1,6 +1,10 @@
 package com.ssw.referral.service;
 
+import com.ssw.referral.common.CommonException;
 import com.ssw.referral.model.UserModel;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * 使用接口的好处
@@ -10,4 +14,11 @@ import com.ssw.referral.model.UserModel;
 public interface UserService {
 
     UserModel getUser(Integer id);
+
+    UserModel register(UserModel registerUser) throws CommonException, UnsupportedEncodingException, NoSuchAlgorithmException;
+
+    UserModel login(String telphone,String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, CommonException;
+
+    Integer countAllUser();
+
 }

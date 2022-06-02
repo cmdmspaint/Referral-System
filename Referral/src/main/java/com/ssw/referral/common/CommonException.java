@@ -9,6 +9,12 @@ public class CommonException extends Exception{
         this.messageErr = new MessageErr(emBusinessError);
     }
 
+    public CommonException(EmBusinessError emBusinessError,String errMsg){
+        super();
+        this.messageErr = new MessageErr(emBusinessError);
+        this.messageErr.setErrMsg(errMsg);
+    }
+
     public MessageErr getMessageErr() {
         return messageErr;
     }
