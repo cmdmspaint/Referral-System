@@ -5,6 +5,9 @@ import com.ssw.referral.common.*;
 import com.ssw.referral.model.UserModel;
 import com.ssw.referral.request.LoginReq;
 import com.ssw.referral.request.RegisterReq;
+import com.ssw.referral.service.CategoryService;
+import com.ssw.referral.service.SellerService;
+import com.ssw.referral.service.ShopService;
 import com.ssw.referral.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +34,15 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
+    private SellerService sellerService;
 
     @RequestMapping("/test")
     @ResponseBody

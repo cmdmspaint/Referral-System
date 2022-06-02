@@ -4,6 +4,12 @@ Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter
 Version: 2.0.2
 Author: KeenThemes
 Website: http://www.keenthemes.com/
+Contact: support@ke<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
+Version: 2.0.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
 Contact: support@keenthemes.com
 Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
@@ -78,84 +84,52 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="page-content-wrapper">
         <div class="page-content">
             <h3 class="page-title">
-                欢迎进入运营后台
+                品类管理
             </h3>
+            <div class="row" style="margin:20px 0 20px 0;">
+                <button type="button" class="btn green add">添加品类&nbsp;<i class="m-icon-swapright m-icon-white"></i></button>
+            </div>
 
+            <!-- END PAGE TITLE & BREADCRUMB-->
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat blue-madison">
-                        <div class="visual">
-                            <i class="fa fa-comments"></i>
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cogs"></i>品类列表
                         </div>
-                        <div class="details">
-                            <div class="number" th:text="${userCount}">
-
-                            </div>
-                            <div class="desc">
-                                注册用户数
-                            </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>品类名</th>
+                                    <th>icon图片</th>
+                                    <th>排序权重</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="category:${data.list}">
+                                    <td th:text="${category.id}"></td>
+                                    <td th:text="${category.name}"></td>
+                                    <td><img style="width:60px;height:60px;" th:src="${category.iconUrl}"/></td>
+                                    <td th:text="${category.sort}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat red-pinik">
-                        <div class="visual">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number" th:text="${sellerCount}">
-
-                            </div>
-                            <div class="desc">
-                                商户数量
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat green-meadow">
-                        <div class="visual">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number" th:text="${categoryCount}">
-
-                            </div>
-                            <div class="desc">
-                                品类数量
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat yellow-crusta">
-                        <div class="visual">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number" th:text="${shopCount}">
-
-                            </div>
-                            <div class="desc">
-                                 门店数量
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <ul id="page-container" class="pagination"></ul>
                 </div>
             </div>
         </div>
-
-
-            <!-- END PAGE CONTENT-->
-        </div>
+        <!-- END PAGE CONTENT-->
     </div>
-    <!-- END CONTENT -->
+</div>
+<!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
 <footer th:replace="admin/common/footer :: footer"></footer>
@@ -205,13 +179,23 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE LEVEL SCRIPTS -->
 <script th:inline="javascript">
 
-
-
-
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
         Index.init();
+        var baseUrl = "/admin/category/index?page="
+        setUrl(baseUrl);
+        var totalSize = /*[[${data.total}]]*/;
+        var countPerPage = /*[[${data.pageSize}]]*/;
+        var allPage = /*[[${data.pages}]]*/;
+        setPage(document.getElementById("page-container"),allPage,/*[[${currentPage}]]*/);
+        if(allPage <= 1){
+            $("#page-container").hide();
+        }
+
+        $(".add").on("click", function(){
+            window.location.href = "/admin/category/createpage";
+        });
 
     });
 </script>

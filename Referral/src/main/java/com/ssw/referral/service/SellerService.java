@@ -11,5 +11,5 @@ public interface SellerService {
     SellerModel get(Integer id);
     List<SellerModel> selectAll();
     SellerModel changeStatus(Integer id,Integer disabledFlag) throws CommonException;
-
+    Integer countAllSeller();
 }

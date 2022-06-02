@@ -1,4 +1,4 @@
-package com.ssw.referral.controller;
+package com.ssw.referral.controller.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

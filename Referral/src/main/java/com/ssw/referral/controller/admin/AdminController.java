@@ -1,6 +1,9 @@
 package com.ssw.referral.controller.admin;
 
 import com.ssw.referral.common.*;
+import com.ssw.referral.service.CategoryService;
+import com.ssw.referral.service.SellerService;
+import com.ssw.referral.service.ShopService;
 import com.ssw.referral.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +37,15 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
+    private SellerService sellerService;
+
+    @Autowired
+    private CategoryService categoryService;
+
     public static final String CURRENT_ADMIN_SESSION = "currentAdminSession";
 
     @RequestMapping("/index")
@@ -42,6 +54,9 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
         userService.countAllUser();
         modelAndView.addObject("userCount",userService.countAllUser());
+        modelAndView.addObject("shopCount",shopService.countAllShop());
+        modelAndView.addObject("categoryCount",categoryService.countAllCategory());
+        modelAndView.addObject("sellerCount",sellerService.countAllSeller());
         modelAndView.addObject("CONTROLLER_NAME","admin");
         modelAndView.addObject("ACTION_NAME","index");
         return modelAndView;

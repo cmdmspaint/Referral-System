@@ -50,4 +50,9 @@ public class SellerServiceImpl implements SellerService {
         shellerMapper.updateByPrimaryKeySelective(sellerModel);
         return sellerModel;
     }
+
+    @Override
+    public Integer countAllSeller() {
+        return shellerMapper.countAllSeller();
+    }
 }
