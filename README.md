@@ -1,6 +1,6 @@
 # Referral-System
 DistributedRPCFramework is a high-performance, c++-based open-source RPC framework.  
-See the [中文文档](https://github.com/cmdmspaint/DistributedRPCFramework/blob/main/README-zh%20.md) for Chinese readme.
+See the [中文文档](https://github.com/cmdmspaint/Referral-System/edit/main/README-zh.md) for Chinese readme.
 # Architecture
 ![image](https://user-images.githubusercontent.com/50624748/171139236-a3581c77-6589-427f-99dd-2c27b4c68555.png)
 
