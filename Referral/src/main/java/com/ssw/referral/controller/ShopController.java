@@ -60,17 +60,18 @@ public class ShopController {
         if (keyword.isEmpty() || longitude == null || latitude == null){
             throw new CommonException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
-        //V1.0
-        List<ShopModel> shopModelList = shopService.search(longitude,latitude,keyword,orderby,categoryId,tags);
+        // 直接搜索数据库的方式
+        //List<ShopModel> shopModelList = shopService.search(longitude,latitude,keyword,orderby,categoryId,tags);
+        // List<CategoryModel> categoryModelList = categoryService.selectAll();
+        //  List<Map<String, Object>> tagsAggregation = shopService.searchGroupByTags(keyword,categoryId,tags);
 
-        //V2.0
-      /*  Map<String,Object> result = shopService.searchES(longitude,latitude,keyword,orderby,categoryId,tags);
+        // 通过es搜索
+        Map<String,Object> result = shopService.searchES(longitude,latitude,keyword,orderby,categoryId,tags);
         List<ShopModel> shopModelList = (List<ShopModel>) result.get("shop");
         List<CategoryModel> categoryModelList = categoryService.selectAll();
-        List<Map<String, Object>> tagsAggregation = (List<Map<String, Object>>) result.get("tags");*/
+        List<Map<String, Object>> tagsAggregation = (List<Map<String, Object>>) result.get("tags");
 
-        List<CategoryModel> categoryModelList = categoryService.selectAll();
-        List<Map<String, Object>> tagsAggregation = shopService.searchGroupByTags(keyword,categoryId,tags);
+
         //为了以后扩展筛选条件，故不和推荐一样直接返回list的model
         Map<String,Object> resMap = new HashMap<>();
         resMap.put("shop",shopModelList);
