@@ -7,7 +7,7 @@ See the [中文文档](https://github.com/cmdmspaint/DistributedRPCFramework/blo
 ![image](https://user-images.githubusercontent.com/50624748/171136983-19564ae7-def1-4a9c-9c2f-d21e5564afcd.png)
 
 # Components
-rpc provider rpc comsumer zookeeper logger-system  Asynchronous buffer queues
+ElasticSearch Kibana Logstach mysql spark
 
 # How to Build
 git clone git@github.com:cmdmspaint/DistributedRPCFramework.git  
