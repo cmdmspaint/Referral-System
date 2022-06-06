@@ -413,6 +413,24 @@ public class ShopServiceImpl implements ShopService {
         return res;
     }
     private Map<Integer,List<String>> categoryWorkMap = new HashMap<>();
+
+    //在spring容器初始化的时候执行该方法
+    @PostConstruct
+    public void init(){
+        // 根据对应的categoryId 区分类目 然后设置对应的关键词匹配
+        // 1美食 2酒店 输入关键词即可 查找对应的类目信息
+        categoryWorkMap.put(1,new ArrayList<>());
+        categoryWorkMap.put(2,new ArrayList<>());
+
+        categoryWorkMap.get(1).add("吃饭");
+        categoryWorkMap.get(1).add("下午茶");
+
+        categoryWorkMap.get(2).add("休息");
+        categoryWorkMap.get(2).add("睡觉");
+        categoryWorkMap.get(2).add("住宿");
+
+    }
+
     private Integer getCategoryIdByToken(String token){
         for(Integer key : categoryWorkMap.keySet()){
             List<String> tokenList = categoryWorkMap.get(key);
